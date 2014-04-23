@@ -9,7 +9,7 @@ public class DBCommunication
 {
 	//path to connect
 	private String jdbcdriver = "com.mysql.jdbc.Driver";
-	private String urldb = "jdbc:mysql://localhost/";
+	private String urldb = "jdbc:mysql://igor.gold.ac.uk/";
 
 	//user details
 	private String user;
@@ -55,8 +55,9 @@ public class DBCommunication
 		stmt.executeUpdate(sql);
 	}
 
-	DBCommunication(String dbname, String user, String pass)
+	DBCommunication(String urldb, String dbname, String user, String pass)
 	{
+		this.urldb = urldb;
 		this.user = user;
 		this.pass = pass;
 
@@ -66,6 +67,7 @@ public class DBCommunication
 		{
 			Class.forName(jdbcdriver);
 			System.out.println("Connecting to database...");
+			System.out.println("at " + urldb);
 			System.out.println("Checking if database " + dbname + " exists...");
 			conn = DriverManager.getConnection(urldb,user,pass);
 

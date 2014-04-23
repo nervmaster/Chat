@@ -11,12 +11,13 @@ public class MainServer
 
 	public static void main(String[] args) throws Exception
 	{
-		int portno = 5000;
+		int portno = 5001;
+		String dburl = "jdbc:mysql://localhost/";
 		String dbname = "CHAT";
-		String user = "nervmaster";
-		String pass = "123456";
+		String user = "guest";
+		String pass = "";
 
-		for(int i = 1; i < args.length ; i++)
+		for(int i = 1; i <= args.length ; i++)
 		{
 			switch(i)
 			{
@@ -27,17 +28,22 @@ public class MainServer
 				}
 				case 2:
 				{
-					dbname = args[1];
+					dburl = args[1];
 					break;
 				}
 				case 3:
 				{
-					user = args[2];
+					dbname = args[2];
 					break;
 				}
 				case 4:
 				{
-					pass = args[3];
+					user = args[3];
+					break;
+				}
+				case 5:
+				{
+					pass = args[4];
 					break;
 				}
 			}
@@ -45,7 +51,7 @@ public class MainServer
 				
 
 		ServerSocket s = new ServerSocket(portno);
-		DBCommunication db = new DBCommunication(dbname,user,pass);
+		DBCommunication db = new DBCommunication(dburl,dbname,user,pass);
 	 	ClientConnection k;
 
 		while(true)

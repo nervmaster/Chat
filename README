@@ -1,0 +1,58 @@
+Program almost complete.  just need to change the DB address from
+localhost to the remote one.
+
+Pasting the read me:
+
+#Components
+
+All the files are contained on the 'chat' package.
+Including the following files:
+
+Regarding the Server:
+	MainServer.java
+		-main loop that listens for every connection and create a new
+ClientConnection
+	Synchlist.java
+		-Unique list that contains all the clients and admins connected
+	ClientConnection.java
+		-Deals with a client connection
+
+Regarding the Client:
+	UserClient.java
+		-main loop that connects with the server and send messages. Has GUI.
+
+Regarding the Messages:
+	Message.java
+		-Simple kind of message.
+	AdminRights.java
+		-Message that requests admin rights for that client. Extends message.
+	JoinMessage.java
+		-Message that communicates user identifier to server
+	PrivateMessage.java
+		-Message that is send privately to an user.
+	TerminateMessage.java
+		-Message that warns server that the client has quitted
+	WhoMessage.java
+		-Message that requests a Who command of server.
+
+#Compiling
+
+To compile via terminal just run:
+(Assuming you are on the folder that contains this message and folder
+named 'chat')
+	$javac chat/*.java
+
+#Run
+
+Running the server:
+
+	$java chat/MainServer <port number>
+
+	(If no port number is defined it will attempt to run on port 5000)
+
+Running the client:
+
+	$java chat/UserClient <server address> <port number>
+
+	(if no argument is written it will attempt to run on 'localhost' and
+port 5001)
